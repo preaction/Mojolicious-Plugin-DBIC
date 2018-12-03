@@ -1,12 +1,62 @@
 package Mojolicious::Plugin::DBIC;
 our $VERSION = '0.001';
-# ABSTRACT: Write a sentence about what it does
+# ABSTRACT: Mojolicious ♥ DBIx::Class
 
 =head1 SYNOPSIS
 
+    use Mojolicious::Lite;
+    plugin DBIC => {
+        schema => { 'Local::Schema' => 'dbi:SQLite::memory:' },
+    };
+    get '/model', {
+        controller => 'DBIC',
+        action => 'list',
+        resultset => 'Model',
+        template => 'model/list.html.ep',
+    };
+    app->start;
+    __DATA__
+    @@ model/list.html.ep
+    % for my $row ( $resultset->all ) {
+        <p><%= $row->id %></p>
+    % }
+
 =head1 DESCRIPTION
 
+This plugin makes working with L<DBIx::Class> easier in Mojolicious.
+
+=head2 Configuration
+
+Configure your schema in multiple ways:
+
+    # Just DSN
+    plugin DBIC => {
+        schema => {
+            'MySchema' => 'DSN',
+        },
+    };
+
+    # Arguments to connect()
+    plugin DBIC => {
+        schema => {
+            'MySchema' => [ 'DSN', 'user', 'password', { RaiseError => 1 } ],
+        },
+    };
+
+    # Connected schema object
+    my $schema = MySchema->connect( ... );
+    plugin DBIC => {
+        schema => $schema,
+    };
+
+=head2 Controller
+
+This plugin contains a controller to reduce the code needed for simple
+database operations. See L<Mojolicious::Plugin::DBIC::Controller::DBIC>.
+
 =head1 SEE ALSO
+
+L<Mojolicious>, L<DBIx::Class>, L<Yancy>
 
 =cut
 
@@ -16,7 +66,7 @@ use Scalar::Util qw( blessed );
 
 sub register {
     my ( $self, $app, $conf ) = @_;
-    # XXX Allow multiple schemas
+    # XXX Allow multiple schemas?
     my $schema_conf = $conf->{schema};
     if ( !$schema_conf && $app->can( 'config' ) ) {
         $schema_conf = $app->config->{dbic}{schema};
