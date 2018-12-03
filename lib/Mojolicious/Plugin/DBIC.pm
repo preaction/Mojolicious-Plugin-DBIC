@@ -49,6 +49,23 @@ Configure your schema in multiple ways:
         schema => $schema,
     };
 
+This plugin can also be configured from the application configuration
+file:
+
+    # myapp.conf
+    {
+        dbic => {
+            schema => {
+                'MySchema' => 'dbi:SQLite:data.db',
+            },
+        },
+    }
+
+    # myapp.pl
+    use Mojolicious::Lite;
+    plugin 'Config';
+    plugin 'DBIC';
+
 =head2 Controller
 
 This plugin contains a controller to reduce the code needed for simple
