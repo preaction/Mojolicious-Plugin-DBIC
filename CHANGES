@@ -2,6 +2,8 @@ Changelog for Mojolicious-Plugin-DBIC
 
 {{ $NEXT }}
 
+0.001     2018-12-02 20:47:57-06:00 America/Chicago
+
     [Added]
 
     - Added plugin with schema configuration
