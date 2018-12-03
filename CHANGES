@@ -1,3 +1,8 @@
 Changelog for Mojolicious-Plugin-DBIC
 
 {{ $NEXT }}
+
+    [Added]
+
+    - Added plugin with schema configuration
+    - Added basic controller with "list" and "get" actions
