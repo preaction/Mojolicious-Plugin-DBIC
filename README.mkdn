@@ -1,0 +1,77 @@
+[![Build Status](https://travis-ci.org/preaction/Mojolicious-Plugin-DBIC.svg?branch=master)](https://travis-ci.org/preaction/Mojolicious-Plugin-DBIC)
+[![Coverage Status](https://coveralls.io/repos/preaction/Mojolicious-Plugin-DBIC/badge.svg?branch=master)](https://coveralls.io/r/preaction/Mojolicious-Plugin-DBIC?branch=master)
+
+# NAME
+
+Mojolicious::Plugin::DBIC - Mojolicious ♥ DBIx::Class
+
+# VERSION
+
+version 0.001
+
+# SYNOPSIS
+
+    use Mojolicious::Lite;
+    plugin DBIC => {
+        schema => { 'Local::Schema' => 'dbi:SQLite::memory:' },
+    };
+    get '/model', {
+        controller => 'DBIC',
+        action => 'list',
+        resultset => 'Model',
+        template => 'model/list.html.ep',
+    };
+    app->start;
+    __DATA__
+    @@ model/list.html.ep
+    % for my $row ( $resultset->all ) {
+        <p><%= $row->id %></p>
+    % }
+
+# DESCRIPTION
+
+This plugin makes working with [DBIx::Class](https://metacpan.org/pod/DBIx::Class) easier in Mojolicious.
+
+## Configuration
+
+Configure your schema in multiple ways:
+
+    # Just DSN
+    plugin DBIC => {
+        schema => {
+            'MySchema' => 'DSN',
+        },
+    };
+
+    # Arguments to connect()
+    plugin DBIC => {
+        schema => {
+            'MySchema' => [ 'DSN', 'user', 'password', { RaiseError => 1 } ],
+        },
+    };
+
+    # Connected schema object
+    my $schema = MySchema->connect( ... );
+    plugin DBIC => {
+        schema => $schema,
+    };
+
+## Controller
+
+This plugin contains a controller to reduce the code needed for simple
+database operations. See [Mojolicious::Plugin::DBIC::Controller::DBIC](https://metacpan.org/pod/Mojolicious::Plugin::DBIC::Controller::DBIC).
+
+# SEE ALSO
+
+[Mojolicious](https://metacpan.org/pod/Mojolicious), [DBIx::Class](https://metacpan.org/pod/DBIx::Class), [Yancy](https://metacpan.org/pod/Yancy)
+
+# AUTHOR
+
+Doug Bell <preaction@cpan.org>
+
+# COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2018 by Doug Bell.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
