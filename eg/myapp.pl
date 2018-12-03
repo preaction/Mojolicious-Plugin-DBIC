@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 use Mojolicious::Lite;
-use lib 'lib', 't/lib';
+use lib '../lib', '../t/lib';
 use Local::Schema;
 
 my $schema = Local::Schema->connect(
