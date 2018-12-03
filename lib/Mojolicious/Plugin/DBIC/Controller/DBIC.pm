@@ -1,5 +1,5 @@
 package Mojolicious::Plugin::DBIC::Controller::DBIC;
-use Mojo::Base 'Mojolicious::Controller';
+our $VERSION = '0.002';
 # ABSTRACT: Build simple views to DBIC data
 
 =head1 SYNOPSIS
@@ -19,6 +19,12 @@ This controller allows for easy working with data from the schema.
 Controllers are configured through the stash when setting up the routes.
 
 =head1 SEE ALSO
+
+L<Mojolicious::Plugin::DBIC>
+
+=cut
+
+use Mojo::Base 'Mojolicious::Controller';
 
 =method list
 
