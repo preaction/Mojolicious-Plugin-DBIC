@@ -63,9 +63,10 @@ sub list {
     my ( $c ) = @_;
     my $rs_class = $c->stash( 'resultset' );
     my $rs = $c->schema->resultset( $rs_class );
-    return $c->render(
+    $c->stash(
         resultset => $rs,
     );
+    return;
 }
 
 =method get
@@ -111,9 +112,10 @@ sub get {
     my $id = $c->stash( 'id' );
     my $rs = $c->schema->resultset( $rs_class );
     my $row = $rs->find( $id );
-    return $c->render(
+    $c->stash(
         row => $row,
     );
+    return;
 }
 
 1;
