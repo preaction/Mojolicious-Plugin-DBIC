@@ -5,6 +5,7 @@ This tests the Mojolicious::Plugin::DBIC::Controller::DBIC class
 
 =cut
 
+use Mojo::Base -strict;
 use Test::More;
 use Test::Mojo;
 use FindBin qw( $Bin );
