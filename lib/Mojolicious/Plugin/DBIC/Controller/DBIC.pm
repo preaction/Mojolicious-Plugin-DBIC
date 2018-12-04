@@ -35,7 +35,8 @@ use Mojo::Base 'Mojolicious::Controller';
         template => 'blog/list',
     };
 
-List data in a ResultSet.
+List data in a ResultSet. Returns false if it has rendered a response,
+true if dispatch can continue.
 
 This method uses the following stash values for configuration:
 
@@ -63,10 +64,9 @@ sub list {
     my ( $c ) = @_;
     my $rs_class = $c->stash( 'resultset' );
     my $rs = $c->schema->resultset( $rs_class );
-    $c->stash(
+    return $c->stash(
         resultset => $rs,
     );
-    return;
 }
 
 =method get
@@ -78,7 +78,9 @@ sub list {
         template => 'blog/get',
     };
 
-Fetch a single result by its ID.
+Fetch a single result by its ID. If no result is found, renders a not
+found error. Returns false if it has rendered a response, true if
+dispatch can continue.
 
 This method uses the following stash values for configuration:
 
@@ -112,10 +114,13 @@ sub get {
     my $id = $c->stash( 'id' );
     my $rs = $c->schema->resultset( $rs_class );
     my $row = $rs->find( $id );
-    $c->stash(
+    if ( !$row ) {
+        $c->reply->not_found;
+        return;
+    }
+    return $c->stash(
         row => $row,
     );
-    return;
 }
 
 1;

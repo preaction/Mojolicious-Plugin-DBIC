@@ -67,5 +67,9 @@ $t->get_ok( '/notes/1' )->status_is( 200 )
   ->text_is( 'footer' => 'Extended' )
   ;
 
+$t->get_ok( '/notes/12938920' )->status_is( 404 )
+  ->or( sub { diag shift->tx->res->body } )
+  ;
+
 done_testing;
 

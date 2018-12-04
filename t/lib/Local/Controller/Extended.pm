@@ -3,14 +3,14 @@ use Mojo::Base 'Mojolicious::Plugin::DBIC::Controller::DBIC';
 
 sub list {
     my ( $c ) = @_;
-    $c->SUPER::list();
-    $c->stash( extended => 'Extended' );
+    $c->SUPER::list() || return;
+    $c->render( extended => 'Extended' );
 }
 
 sub get {
     my ( $c ) = @_;
-    $c->SUPER::get();
-    $c->stash( extended => 'Extended' );
+    $c->SUPER::get() || return;
+    $c->render( extended => 'Extended' );
 }
 
 1;
