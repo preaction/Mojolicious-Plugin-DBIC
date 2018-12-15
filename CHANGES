@@ -2,6 +2,8 @@ Changelog for Mojolicious-Plugin-DBIC
 
 {{ $NEXT }}
 
+0.003     2018-12-15 16:43:57-06:00 America/Chicago
+
     [Added]
 
     - Added "set" and "delete" actions. This allows for creating,
