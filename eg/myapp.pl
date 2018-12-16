@@ -2,14 +2,9 @@
 
 use Mojolicious::Lite;
 use lib '../lib', '../t/lib';
-use Local::Schema;
 
-my $schema = Local::Schema->connect(
-    'dbi:SQLite:data.db',
-);
-plugin DBIC => {
-    schema => $schema,
-};
+plugin 'Config';
+plugin 'DBIC';
 
 get '/notes' => {
     controller => 'DBIC',
