@@ -13,6 +13,14 @@ get '/notes' => {
     template => 'notes/list',
 } => 'notes.list';
 
+any [qw( GET POST )], '/notes/new' => {
+    controller => 'DBIC',
+    action => 'set',
+    resultset => 'Notes',
+    template => 'notes/edit',
+    forward_to => 'notes.get',
+} => 'notes.create';
+
 get '/notes/:id' => {
     controller => 'DBIC',
     action => 'get',
