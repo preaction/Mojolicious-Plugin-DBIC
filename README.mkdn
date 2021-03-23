@@ -7,7 +7,7 @@ Mojolicious::Plugin::DBIC - Mojolicious ♥ DBIx::Class
 
 # VERSION
 
-version 0.003
+version 0.004
 
 # SYNOPSIS
 
@@ -85,6 +85,10 @@ database operations. See [Mojolicious::Plugin::DBIC::Controller::DBIC](https://m
 # AUTHOR
 
 Doug Bell <preaction@cpan.org>
+
+# CONTRIBUTOR
+
+K. Andrew Parker <kparker@citytech.cuny.edu>
 
 # COPYRIGHT AND LICENSE
 
