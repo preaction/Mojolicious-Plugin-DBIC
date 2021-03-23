@@ -2,6 +2,8 @@ Changelog for Mojolicious-Plugin-DBIC
 
 {{ $NEXT }}
 
+0.004     2021-03-23 11:37:16-05:00 America/Chicago
+
     [Fixed]
 
     - Fixed compatibility with Mojolicious 9:
