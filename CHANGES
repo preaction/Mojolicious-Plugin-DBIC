@@ -2,6 +2,10 @@ Changelog for Mojolicious-Plugin-DBIC
 
 {{ $NEXT }}
 
+    [Added]
+
+    - Added pagination and sorting to the `list` action.
+
 0.004     2021-03-23 11:37:16-05:00 America/Chicago
 
     [Fixed]
