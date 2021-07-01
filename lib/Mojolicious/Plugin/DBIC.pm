@@ -1,5 +1,5 @@
 package Mojolicious::Plugin::DBIC;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 # ABSTRACT: Mojolicious ♥ DBIx::Class
 
 =head1 SYNOPSIS

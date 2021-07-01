@@ -1,5 +1,5 @@
 package Mojolicious::Plugin::DBIC::Controller::DBIC;
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 # ABSTRACT: Build simple views to DBIC data
 
 =head1 SYNOPSIS
